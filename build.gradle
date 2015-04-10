@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+
+jar.archiveName = '000_' + project.name + '.jar'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+defaultTasks 'clean', 'build'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.bukkit.org/content/groups/public/" }
+}
+
+dependencies {
+    compile group: 'org.bukkit', name: 'bukkit', version: '1.7.9-R0.2'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.2'
+}
+
+processResources {
+    expand project.properties
+}
